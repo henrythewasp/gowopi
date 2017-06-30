@@ -28,5 +28,9 @@ func fileContentsHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, _ := strconv.Atoi(vars["file_id"])
 
+	// curl http://gt.inovem.com:8181/wopi/files/1234/contents -H "Authorization: token 1234"
+
+	auth := r.Header.Get("Authorization");
 	fmt.Fprintf(w, "Contents for File ID [%d] blah blah blah", id);
+	fmt.Fprintf(w, "\nAuthorization header is [%s]", auth);
 }
